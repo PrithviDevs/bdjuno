@@ -17,6 +17,8 @@ import (
 	"github.com/forbole/bdjuno/v3/modules"
 
 	gaiaapp "github.com/cosmos/gaia/v7/app"
+
+	omniFlixApp "github.com/OmniFlix/omniflixhub/app"
 )
 
 func main() {
@@ -56,6 +58,7 @@ func main() {
 func getBasicManagers() []module.BasicManager {
 	return []module.BasicManager{
 		gaiaapp.ModuleBasics,
+		omniFlixApp.ModuleBasics,
 	}
 }
 
@@ -64,6 +67,7 @@ func getBasicManagers() []module.BasicManager {
 // This should be edited by custom implementations if needed.
 func getAddressesParser() messages.MessageAddressesParser {
 	return messages.JoinMessageParsers(
+		omniFlixMessageAddressesParser,
 		messages.CosmosMessageAddressesParser,
 	)
 }
